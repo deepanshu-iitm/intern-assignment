@@ -44,11 +44,15 @@ const Dropdown: React.FC = () => {
                         },
                     }}
                 >
-                    {stocks.map((stock) => (
-                        <MenuItem key={stock.id} value={stock.id}>
-                            {stock.name}
-                        </MenuItem>
-                    ))}
+                    {Array.isArray(stocks) && stocks.length > 0 ? (
+                        stocks.map((stock) => (
+                            <MenuItem key={stock.id} value={stock.id}>
+                                {stock.name}
+                            </MenuItem>
+                        ))
+                    ) : (
+                    <MenuItem disabled>No stocks available</MenuItem>
+                    )}
                 </Select>
             </FormControl>
         </Box>
